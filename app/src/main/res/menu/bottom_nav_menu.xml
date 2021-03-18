@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">    <item
-    android:id="@+id/action_recents"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+    android:id="@+id/action_home"
     android:enabled="true"
     android:icon="@drawable/ic_search"
-    android:title="search"
-    app:showAsAction="ifRoom" />    <item
-    android:id="@+id/action_favorites"
+    android:title="Home"
+    app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/action_weather"
     android:enabled="true"
     android:icon="@drawable/ic_weather"
     android:title="weather"
-    app:showAsAction="ifRoom" />    <item
-    android:id="@+id/action_nearby"
-    android:enabled="true"
-    android:icon="@drawable/ic_map"
-    android:title="map"
     app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/action_GPS"
+    android:enabled="true"
+    android:icon="@drawable/ic_location"
+    android:title="GPS"
+    app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map"
+        android:title="map"
+        app:showAsAction="ifRoom" />
 </menu>

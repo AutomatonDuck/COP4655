@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import androidx.core.app.ActivityCompat;
@@ -48,19 +49,22 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            Menu nav_menu = bottomNavigationView.getMenu();
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                nav_menu.findItem(R.id.action_home).setVisible(false);
                 switch (item.getItemId()) {
-                    case R.id.action_recents:
-                            checkInput();
-                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.action_favorites:
+                    case R.id.action_weather:
                         Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
+                        checkInput();
                         break;
-                    case R.id.action_nearby:
+                    case R.id.action_GPS:
+                        Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
+                        getLocation();
+                    case R.id.action_map:
                         Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_SHORT).show();
-                        break;                }
+                        break;
+                }
                 return true;
             }
         });
@@ -127,24 +131,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void checkInput(){
+    public void checkInput() {
         userInputST = (EditText) findViewById(R.id.searchbar);
         String userInput = userInputST.getText().toString();
         boolean isZipcode;
         try {
             Integer.parseInt(userInput);
             isZipcode = true;
-        }catch (Exception e){
+        } catch (Exception e) {
             isZipcode = false;
         }
         String APIkey = "6184e454348e716d1cb4b6f3124dc521";
         String url = "https://api.openweathermap.org/data/2.5/weather?/PAC0";
-        if(isZipcode){
+        if (isZipcode) {
             url += "&zip=" + userInput;
-        }else{
+        } else {
             url += "&q=" + userInput;
         }
-        url +="&appid=" + APIkey +"&units=imperial";
+        url += "&appid=" + APIkey + "&units=imperial";
         getWeather(url);
     }
 
@@ -163,10 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void toWeather(){
-        Intent intent = new Intent(this, Weather.class);
-        startActivity(intent);
-    }
+
 }
 /* Response
 {

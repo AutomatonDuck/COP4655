@@ -30,26 +30,11 @@
 
         <EditText
             android:id="@+id/searchbar"
-            android:layout_width="275dp"
+            android:layout_width="match_parent"
             android:layout_height="53dp"
             android:ems="10"
             android:hint="Enter City or Zip"
             android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/Sbtn"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="63dp"
-            android:layout_height="wrap_content"
-            android:onClick="checkInput"
-            app:icon="@android:drawable/ic_menu_send" />
-
-        <Button
-            android:id="@+id/gpsbtn"
-            android:layout_width="68dp"
-            android:layout_height="wrap_content"
-            android:onClick="getLocation"
-            app:icon="@android:drawable/ic_dialog_map" />
 
     </LinearLayout>
 
