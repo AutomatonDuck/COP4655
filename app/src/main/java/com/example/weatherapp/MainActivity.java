@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import androidx.core.app.ActivityCompat;
 import android.widget.EditText;
@@ -19,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -41,6 +45,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         headerView = (TextView) findViewById(R.id.Header);
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navMenu);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_recents:
+                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_favorites:
+                        Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_nearby:
+                        Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_SHORT).show();
+                        break;                }
+                return true;
+            }
+        });
+
+
 
         //tempView = (TextView) findViewById(R.id.TempView);
         //getWeather();
