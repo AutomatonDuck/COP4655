@@ -162,6 +162,11 @@ public class MainActivity extends AppCompatActivity {
             String lon = Double.toString(longitude);
             String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat +"&lon=" + lon + "&appid=" + APIkey +"&units=imperial";
             getWeather(url);
+
+            Intent intent = new Intent(this, MapsActivity.class);
+            intent.putExtra("lat", lat);
+            intent.putExtra("lon", lon);
+
         }else {
             headerView.setText("ERROR: No Response");
         }

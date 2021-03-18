@@ -1,11 +1,17 @@
 package com.example.weatherapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +64,27 @@ public class Weather extends AppCompatActivity {
         latlonView = (TextView) findViewById(R.id.latlonView);
         tempView = (TextView) findViewById(R.id.tempView);
         getSupportActionBar().hide();
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navMenu2);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            Menu nav_menu = bottomNavigationView.getMenu();
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                nav_menu.findItem(R.id.action_weather).setVisible(false);
+                nav_menu.findItem(R.id.action_GPS).setVisible(false);
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        toSearch();
+                        Toast.makeText(Weather.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_map:
+                        toMap();
+                        Toast.makeText(Weather.this, "Map", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
 
         try {
             JSONObject weath = new JSONObject(getIntent().getStringExtra("Response"));
@@ -116,13 +143,13 @@ public class Weather extends AppCompatActivity {
 
 
     }
-    public void toMap(View view){
+    public void toMap(){
         Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra("lat", lat);
         intent.putExtra("lon", lon);
         startActivity(intent);
     }
-    public  void toSearch(View v){
+    public  void toSearch(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

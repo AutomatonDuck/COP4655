@@ -158,31 +158,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/map_button"
-            android:layout_width="171dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="toMap"
-            android:text="To Map" />
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/rtnTosearch"
-            android:layout_width="54dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="toSearch"
-            android:text="Back to Search" />
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -190,5 +171,16 @@
         android:layout_height="46dp"
         android:gravity="center"
         android:text="Dominic Robbins Z23496617" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"/>
 
 </LinearLayout>
