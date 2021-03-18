@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     //TextView tempView;
     private static final int REQUEST_CODE_PERMISSION = 2;
     String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
-
+    EditText userInputST;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_recents:
+                            checkInput();
                         Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_favorites:
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                headerView.setText("ERROR: No Response"); // change to toast
+                Toast.makeText(MainActivity.this, "No Response", Toast.LENGTH_SHORT).show(); // change to toast
 
             }
         });
@@ -126,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void checkInput(View view){
-        EditText userInputST = (EditText) findViewById(R.id.searchbar);
+    public void checkInput(){
+        userInputST = (EditText) findViewById(R.id.searchbar);
         String userInput = userInputST.getText().toString();
         boolean isZipcode;
         try {
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         getWeather(url);
     }
 
-    public void getLocation(View view){
+    public void getLocation(){
         gps = new GPSTracker(MainActivity.this);
         String APIkey = "6184e454348e716d1cb4b6f3124dc521";
         if(gps.canGetLocation()){
@@ -160,6 +161,11 @@ public class MainActivity extends AppCompatActivity {
         }else {
             headerView.setText("ERROR: No Response");
         }
+    }
+
+    public void toWeather(){
+        Intent intent = new Intent(this, Weather.class);
+        startActivity(intent);
     }
 }
 /* Response
