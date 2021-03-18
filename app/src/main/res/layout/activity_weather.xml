@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_weather"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    tools:context=".Weather">
+
+    <TextView
+        android:id="@+id/header2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="SimpleWeather"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cityView"
+            android:layout_width="207dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="city"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tempView"
+            android:layout_width="208dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="temp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cloudsView"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:text="clouds"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/dateView"
+            android:layout_width="205dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="date"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#0E0E0E"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/windView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="wind"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="11dp"
+        android:background="#36070707"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/pressureView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="pressure"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="#36070707"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/humidityView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="humidity"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:background="#36070707"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/sunrsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="sunrise/sunset"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="#36070707"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/latlonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="latlon"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:background="#36070707"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/map_button"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="toMap"
+            android:text="To Map" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/rtnTosearch"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="toSearch"
+            android:text="Back to Search" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:text="Dominic Robbins Z23496617" />
+
+</LinearLayout>

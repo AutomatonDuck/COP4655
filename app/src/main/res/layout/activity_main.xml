@@ -1,18 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/Header"
+        android:layout_width="411dp"
+        android:layout_height="62dp"
+        android:background="#D5777272"
+        android:gravity="center|top"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchbar"
+            android:layout_width="275dp"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:hint="Enter City or Zip"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/Sbtn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkInput"
+            app:icon="@android:drawable/ic_menu_send" />
+
+        <Button
+            android:id="@+id/gpsbtn"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:onClick="getLocation"
+            app:icon="@android:drawable/ic_dialog_map" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:gravity="center"
+        android:text="Dominic Robbins Z23496617" />
+
+</LinearLayout>
