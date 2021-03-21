@@ -11,6 +11,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -47,9 +53,10 @@ public class Weather extends AppCompatActivity {
     Long sunsetdt;
     String sunrise;
     String sunset;
+    String id;
     Long dt;
     Date date;
-
+    String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +82,16 @@ public class Weather extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         toSearch();
-                        Toast.makeText(Weather.this, "Home", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Weather.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_map:
                         toMap();
-                        Toast.makeText(Weather.this, "Map", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Weather.this, "Map", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_history:
+                        getHistory(url);
+                        //Toast.makeText(Weather.this, "History", Toast.LENGTH_SHORT).show();
+
                         break;
                 }
                 return true;
@@ -99,6 +111,7 @@ public class Weather extends AppCompatActivity {
             dt =  weath.getLong("dt");
             temp = main.getString("temp");
             city = weath.getString("name");
+            id = weath.getString("id");
             //fix this // make another JSONOBJECT To pull deeper data
             clouds = weather2.getString("description");
             winds = wind.getString("speed");
@@ -131,13 +144,12 @@ public class Weather extends AppCompatActivity {
             sunrsView.setText("Sunrise: "+ sunrise + " / " + "Sunset: " + sunset);
             dateView.setText(String.valueOf(fdate));
 
-
-
-
+            String APIkey = getString(R.string.APIKEY);
+            url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid="+ APIkey+"&units=imperial";
 
 
         }catch (JSONException e){
-            cityView.setText("ERROR");
+
             e.printStackTrace();
         }
 
@@ -151,6 +163,47 @@ public class Weather extends AppCompatActivity {
     }
     public  void toSearch(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void getHistory(String url){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        //String cityname = "miami";
+        //String APIkey = "6184e454348e716d1cb4b6f3124dc521";
+        //String url =
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                url,
+
+                response -> {
+                    //textView.setText("Response is: " + response.substring(0, 489)); //response is only length 489
+                    //System.out.println("***"+response.substring(0,500));
+                    try {
+                        JSONObject repo = new JSONObject(response);
+                        sendResponse(repo);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Weather.this, "No Response dood", Toast.LENGTH_SHORT).show(); // change to toast
+
+            }
+        });
+        queue.add(stringRequest);
+
+
+    }
+
+    public void sendResponse(JSONObject response){
+        Intent intent = new Intent(this, History.class);
+        intent.putExtra("Response", response.toString());
         startActivity(intent);
     }
 }
