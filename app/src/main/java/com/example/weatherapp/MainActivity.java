@@ -29,6 +29,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.Socket;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,15 +56,19 @@ public class MainActivity extends AppCompatActivity {
                 nav_menu.findItem(R.id.action_home).setVisible(false);
                 switch (item.getItemId()) {
                     case R.id.action_weather:
-                        Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
                         checkInput();
                         break;
                     case R.id.action_GPS:
-                        Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
                         getLocation();
                     case R.id.action_map:
-                        Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.action_history:
+                        //Toast.makeText(MainActivity.this, "History", Toast.LENGTH_SHORT).show();
+                        break;
+
                 }
                 return true;
             }
