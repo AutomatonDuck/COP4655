@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     public void getWeather(String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
         //String cityname = "miami";
-        //String APIkey = "6184e454348e716d1cb4b6f3124dc521";
+
         //String url =
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             isZipcode = false;
         }
-        String APIkey = "6184e454348e716d1cb4b6f3124dc521";
+        String APIkey = getString(R.string.APIKEY);
         String url = "https://api.openweathermap.org/data/2.5/weather?/PAC0";
         if (isZipcode) {
             url += "&zip=" + userInput;
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getLocation(){
         gps = new GPSTracker(MainActivity.this);
-        String APIkey = "6184e454348e716d1cb4b6f3124dc521";
+        String APIkey = getString(R.string.APIKEY);
         if(gps.canGetLocation()){
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
