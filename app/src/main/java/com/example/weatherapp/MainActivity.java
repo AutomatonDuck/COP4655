@@ -53,8 +53,11 @@ public class MainActivity extends AppCompatActivity {
             Menu nav_menu = bottomNavigationView.getMenu();
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                nav_menu.findItem(R.id.action_home).setVisible(false);
+
                 switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(MainActivity.this, "You're Already Home", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.action_weather:
                         //Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
                         checkInput();
@@ -62,11 +65,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_GPS:
                        // Toast.makeText(MainActivity.this, "Weather", Toast.LENGTH_SHORT).show();
                         getLocation();
+                        break;
                     case R.id.action_map:
-                       // Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "No Location Entered", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_history:
-                        //Toast.makeText(MainActivity.this, "History", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "No Location Entered", Toast.LENGTH_SHORT).show();
                         break;
 
                 }

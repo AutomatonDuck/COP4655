@@ -1,11 +1,18 @@
 package com.example.weatherapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +45,35 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navMenu3);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            Menu nav_menu = bottomNavigationView.getMenu();
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        toSearch();
+                        //Toast.makeText(Weather.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_weather:
+                        //Toast.makeText(History.this, "Weather is above", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_GPS:
+                        //Toast.makeText(History.this, "Weather is above", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_map:
+                        //Toast.makeText(Weather.this, "Map", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_history:
+                        //Toast.makeText(Weather.this, "History", Toast.LENGTH_SHORT).show();
+
+                        break;
+                }
+                return true;
+            }
+        });
+
 
 
 
@@ -68,21 +104,21 @@ public class History extends AppCompatActivity {
                 sunrise = new SimpleDateFormat("hh:mm:ss").format(fsunrise);
                 sunset = new SimpleDateFormat("hh:mm:ss").format(fsunset);
 
-                wethList.add(main.getString(i));
-           /*     ArrayList<String> hList = new ArrayList<>();
-                hList.add(0,fdate);
-                hList.add(1,temp);
-                hList.add(2,min);
-                hList.add(3,max);
-                hList.add(4,pressure);
-                hList.add(5,humidity);
-                hList.add(6, winds);
-                hList.add(7,windr);
-
-                hList.add(8,sunrise);
-                hList.add(9,sunset);*/
 
 
+                ArrayList<String> hList = new ArrayList<>();
+                hList.add(0,"Date: "+ fdate+"\n");
+                hList.add(1,"Avg Temp: "+temp+"F\n");
+                hList.add(2,"Min temp: "+min+"F\n");
+                hList.add(3,"Max Temp: "+max+"F\n");
+                hList.add(4,"Pressure: "+pressure+"mmgh\n");
+                hList.add(5,"Humidity: "+humidity+"\n");
+                hList.add(6,"Wind Speed: "+winds+"\n");
+                hList.add(7,"Wind Direction :"+windr+"\n");
+                hList.add(8,"Sunrise: "+sunrise+"\n");
+                hList.add(9,"Sunset: "+sunset+"\n");
+
+                wethList.add(hList);
 
             }
             ListView lv = (ListView) findViewById(R.id.histList);
@@ -94,5 +130,12 @@ public class History extends AppCompatActivity {
 
 
     }
-
+    public void toSearch(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void toMap(){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
 }

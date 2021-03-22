@@ -17,10 +17,15 @@
         <ListView
             android:id="@+id/histList"
             android:layout_width="match_parent"
-            android:layout_height="530dp" />
+            android:layout_height="530dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:textAlignment="center"
+            android:textDirection="firstStrong" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:menu="@menu/bottom_nav_menu" />

@@ -77,12 +77,17 @@ public class Weather extends AppCompatActivity {
             Menu nav_menu = bottomNavigationView.getMenu();
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                nav_menu.findItem(R.id.action_weather).setVisible(false);
-                nav_menu.findItem(R.id.action_GPS).setVisible(false);
+
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         toSearch();
                         //Toast.makeText(Weather.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_weather:
+                        Toast.makeText(Weather.this, "Weather is above", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_GPS:
+                        Toast.makeText(Weather.this, "Weather is above", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_map:
                         toMap();
